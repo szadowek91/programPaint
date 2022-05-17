@@ -11,12 +11,14 @@ public class MainFrame extends JFrame {
     private DrawField drawField;
     private SouthBar southBar;
     private NorthBar northBar;
+    private static int width = 800;
+    private static int height = 600;
 
     public MainFrame() {
 
 
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(800, 600);
+        setSize(width, height);
         setLayout(new BorderLayout());
         initComponents();
         initView();
@@ -25,7 +27,7 @@ public class MainFrame extends JFrame {
     private void initComponents() {
         drawField = new DrawField(this);
         southBar = new SouthBar(this);
-        northBar = new NorthBar(this);
+        northBar = new NorthBar(this, drawField);
     }
 
     private void initView() {
@@ -35,6 +37,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initActions() {
+
     }
 
     public DrawField getDrawField() {
@@ -43,5 +46,15 @@ public class MainFrame extends JFrame {
 
     public SouthBar getSouthBar() {
         return southBar;
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
     }
 }

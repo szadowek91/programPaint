@@ -1,6 +1,7 @@
 package bars;
 
 import bars.controllers.NorthBarCtrl;
+import main.DrawField;
 import main.MainFrame;
 import maintools.MainTools;
 
@@ -22,8 +23,11 @@ public class NorthBar extends JMenuBar {
 
     private MainTools mainTools;
 
-    public NorthBar(MainFrame mainFrame) {
+    private DrawField drawField;
+
+    public NorthBar(MainFrame mainFrame, DrawField drawField) {
         this.mainFrame = mainFrame;
+        this.drawField = drawField;
         initComponents();
         initView();
         initActions();
@@ -34,7 +38,6 @@ public class NorthBar extends JMenuBar {
         load = new JMenuItem("Load");
         save = new JMenuItem("Save");
         northTP = new JTabbedPane();
-        northBarCtrl = new NorthBarCtrl(this);
         mainTools = new MainTools();
     }
 
@@ -43,8 +46,8 @@ public class NorthBar extends JMenuBar {
         file.add(load);
         file.add(save);
         add(northTP);
-        northTP.add("Main Tools",mainTools);
-        northTP.add("View",new JPanel());
+        northTP.add("Main Tools", mainTools);
+        northTP.add("View", new JPanel());
         file.setOpaque(true);
         file.setBackground(Color.CYAN);
 
@@ -52,7 +55,7 @@ public class NorthBar extends JMenuBar {
 
     private void initActions() {
         load.addActionListener(e -> northBarCtrl.loadFile());
-        save.addActionListener(e -> northBarCtrl.saveFile());
+        save.addActionListener(e -> northBarCtrl.saveFile(drawField)); //TODO - saving background only!
 
     }
 }

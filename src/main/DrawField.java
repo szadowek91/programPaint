@@ -17,7 +17,6 @@ public class DrawField extends JPanel {
 
     private MainFrame mainFrame;
 
-
     public DrawField(MainFrame mainFrame) {
 
         this.mainFrame = mainFrame;
