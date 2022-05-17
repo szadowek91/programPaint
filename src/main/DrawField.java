@@ -26,7 +26,6 @@ public class DrawField extends JPanel {
 
     }
 
-
     public void initMouseMotions() {
         this.addMouseListener(new MouseAdapter() {
             @Override
@@ -34,7 +33,8 @@ public class DrawField extends JPanel {
                 super.mouseClicked(e);
                 mouseClickedMethod(e);
             }
-
+        });
+        this.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
                 super.mouseDragged(e);
@@ -50,7 +50,9 @@ public class DrawField extends JPanel {
     }
 
     private void mouseClickedMethod(MouseEvent e) {
-        ColorPicker.setPickedColor(getClickedColor(e.getX(), e.getY()), e);
+        if (OtherTools.isPipette()) {
+            ColorPicker.setPickedColor(getClickedColor(), e);
+        }
     }
 
     public void mouseDraggedMethod(MouseEvent e) {
@@ -62,16 +64,15 @@ public class DrawField extends JPanel {
         mainFrame.getSouthBar().setMouseLocation(e.getX(), e.getY());
     }
 
+    public void mouseMovedMethod(MouseEvent e) {
+        mainFrame.getSouthBar().setMouseLocation(e.getX(), e.getY());
+    }
+
     private void selectedShape(Graphics g, MouseEvent e) {
         if (OtherTools.isPencil()) {
             Pencil.getShape(g, e);
-        }
-        else if (OtherTools.isRubber()) {
+        } else if (OtherTools.isRubber()) {
             Rubber.getShape(g, e);
         }
-    }
-
-    public void mouseMovedMethod(MouseEvent e) {
-        mainFrame.getSouthBar().setMouseLocation(e.getX(), e.getY());
     }
 }

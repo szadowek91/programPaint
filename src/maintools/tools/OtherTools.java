@@ -67,7 +67,6 @@ public class OtherTools extends JPanel {
             isRubber = false;
             isPencilSelected.setSelected(false);
             isPencil = false;
-            ColorPipette.pickColor();
         });
     }
 }

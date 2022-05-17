@@ -5,10 +5,12 @@ import java.awt.*;
 
 public class ColorPipette {
 
-    public static Color getClickedColor(int x, int y) {
+    public static Color getClickedColor() {
         try {
-            Robot r = new Robot();
-            return r.getPixelColor(x, y);
+            int xValue = MouseInfo.getPointerInfo().getLocation().x;
+            int yValue = MouseInfo.getPointerInfo().getLocation().y;
+            Robot robot = new Robot();
+            return robot.getPixelColor(xValue, yValue);
         } catch (AWTException e) {
             e.printStackTrace();
         }

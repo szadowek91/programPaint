@@ -18,9 +18,9 @@ public class ColorPicker extends JPanel {
 
     private static Color pickedColorMouse3;
 
-    private JPanel selectedColorMouse1;
+    private static JPanel selectedColorMouse1;
 
-    private JPanel selectedColorMouse3;
+    private static JPanel selectedColorMouse3;
 
     public ColorPicker() {
         pickedColorMouse1 = Color.BLACK;
@@ -115,8 +115,14 @@ public class ColorPicker extends JPanel {
     }
 
     public static void setPickedColor(Color clickedColor, MouseEvent e) {
-        if (isLeftMouseButton(e)) ColorPicker.setPickedColorMouse1(clickedColor);
-        else if (isRightMouseButton(e)) ColorPicker.setPickedColorMouse3(clickedColor);
+        if (isLeftMouseButton(e)) {
+            ColorPicker.setPickedColorMouse1(clickedColor);
+            ColorPicker.selectedColorMouse1.setBackground(clickedColor);
+        }
+        else if (isRightMouseButton(e)) {
+            ColorPicker.setPickedColorMouse3(clickedColor);
+            ColorPicker.selectedColorMouse3.setBackground(clickedColor);
+        }
     }
 
     public static Color getPickedColor(MouseEvent e){
