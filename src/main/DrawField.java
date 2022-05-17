@@ -7,12 +7,10 @@ import maintools.tools.pack.Rubber;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import static javax.swing.SwingUtilities.isLeftMouseButton;
-import static javax.swing.SwingUtilities.isRightMouseButton;
+import static javax.swing.SwingUtilities.isMiddleMouseButton;
 import static maintools.tools.pack.ColorPipette.getClickedColor;
 
 public class DrawField extends JPanel {
@@ -52,16 +50,14 @@ public class DrawField extends JPanel {
     }
 
     private void mouseClickedMethod(MouseEvent e) {
-        ColorPicker.setPickedColor(getClickedColor(e.getX(), e.getY()),e);
+        ColorPicker.setPickedColor(getClickedColor(e.getX(), e.getY()), e);
     }
 
     public void mouseDraggedMethod(MouseEvent e) {
+        if (isMiddleMouseButton(e)) return;
+
         Graphics g = getGraphics();
-        if ((e.getModifiersEx() & InputEvent.BUTTON1_DOWN_MASK) != 0) {
-            g.setColor(ColorPicker.getPickedColorMouse1());
-        } else if ((e.getModifiersEx() & InputEvent.BUTTON3_DOWN_MASK) != 0) {
-            g.setColor(ColorPicker.getPickedColorMouse3());
-        }
+        g.setColor(ColorPicker.getPickedColor(e));
         selectedShape(g, e);
         mainFrame.getSouthBar().setMouseLocation(e.getX(), e.getY());
     }
@@ -70,7 +66,7 @@ public class DrawField extends JPanel {
         if (OtherTools.isPencil()) {
             Pencil.getShape(g, e);
         }
-        if (OtherTools.isRubber()) {
+        else if (OtherTools.isRubber()) {
             Rubber.getShape(g, e);
         }
     }

@@ -98,11 +98,11 @@ public class ColorPicker extends JPanel {
         };
     }
 
-    public static Color getPickedColorMouse1() {
+    private static Color getPickedColorMouse1() {
         return pickedColorMouse1;
     }
 
-    public static Color getPickedColorMouse3() {
+    private static Color getPickedColorMouse3() {
         return pickedColorMouse3;
     }
 
@@ -117,6 +117,13 @@ public class ColorPicker extends JPanel {
     public static void setPickedColor(Color clickedColor, MouseEvent e) {
         if (isLeftMouseButton(e)) ColorPicker.setPickedColorMouse1(clickedColor);
         else if (isRightMouseButton(e)) ColorPicker.setPickedColorMouse3(clickedColor);
+    }
+
+    public static Color getPickedColor(MouseEvent e){
+
+        if (isLeftMouseButton(e)) return ColorPicker.getPickedColorMouse1();
+        else if (isRightMouseButton(e)) return ColorPicker.getPickedColorMouse3();
+        return null;
     }
 
 }
