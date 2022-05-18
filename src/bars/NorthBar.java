@@ -8,15 +8,13 @@ import maintools.MainTools;
 import javax.swing.*;
 import java.awt.*;
 
-
 public class NorthBar extends JMenuBar {
 
     private JMenu file;
     private JMenuItem load;
     private JMenuItem save;
 
-    private MainFrame mainFrame;
-
+    private MainFrame mainframe;
     private NorthBarCtrl northBarCtrl;
 
     private JTabbedPane northTP;
@@ -25,9 +23,10 @@ public class NorthBar extends JMenuBar {
 
     private DrawField drawField;
 
-    public NorthBar(MainFrame mainFrame, DrawField drawField) {
-        this.mainFrame = mainFrame;
+    public NorthBar(MainFrame mainframe ,DrawField drawField) {
+        this.mainframe = mainframe;
         this.drawField = drawField;
+        this.northBarCtrl = new NorthBarCtrl();
         initComponents();
         initView();
         initActions();

@@ -2,6 +2,7 @@ package main;
 
 import bars.NorthBar;
 import bars.SouthBar;
+import bars.controllers.NorthBarCtrl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +28,7 @@ public class MainFrame extends JFrame {
     private void initComponents() {
         drawField = new DrawField(this);
         southBar = new SouthBar(this);
-        northBar = new NorthBar(this, drawField);
+        northBar = new NorthBar( this,drawField);
     }
 
     private void initView() {

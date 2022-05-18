@@ -1,9 +1,5 @@
 package bars.controllers;
 
-import bars.NorthBar;
-import main.DrawField;
-import main.MainFrame;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -12,15 +8,7 @@ import java.io.IOException;
 
 public class NorthBarCtrl {
 
-    private NorthBar northBar;
-    private DrawField drawField;
-
-    private MainFrame mainFrame;
-
-    public NorthBarCtrl(NorthBar northBar, MainFrame mainFrame, DrawField drawField) {
-        this.northBar = northBar;
-        this.mainFrame = mainFrame;
-        this.drawField = drawField;
+    public NorthBarCtrl() {
     }
 
     public void loadFile() {
