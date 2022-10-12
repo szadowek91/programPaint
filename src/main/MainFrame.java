@@ -2,13 +2,11 @@ package main;
 
 import bars.NorthBar;
 import bars.SouthBar;
-import bars.controllers.NorthBarCtrl;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-
     private DrawField drawField;
     private SouthBar southBar;
     private NorthBar northBar;
@@ -40,11 +38,6 @@ public class MainFrame extends JFrame {
     private void initActions() {
 
     }
-
-    public DrawField getDrawField() {
-        return drawField;
-    }
-
     public SouthBar getSouthBar() {
         return southBar;
     }

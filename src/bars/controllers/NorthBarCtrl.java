@@ -11,8 +11,15 @@ public class NorthBarCtrl {
     public NorthBarCtrl() {
     }
 
-    public void loadFile() {
-        System.out.println("LOAD");
+    public BufferedImage loadFile() {
+        String imagePath = "outputFile.png";
+        try {
+            BufferedImage myPicture = ImageIO.read(new File(imagePath));
+            System.out.println("IMAGE LOADED");
+            return myPicture;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void saveFile(JPanel panel) {
